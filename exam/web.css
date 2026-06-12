@@ -166,7 +166,7 @@ body {
     box-shadow: 0 4px 12px rgba(229, 152, 155, 0.2);
 }
 
-/* Stream Area Layout Layout Rules */
+/* Stream Area Layout Rules */
 .main-content {
     max-width: 900px;
     margin: 0 auto;
@@ -356,7 +356,7 @@ body {
     border: 0;
 }
 
-/* Clean UI Plls Cloud */
+/* Clean UI Pills Cloud */
 .pill-cloud {
     display: flex;
     flex-wrap: wrap;
@@ -456,7 +456,7 @@ body {
     line-height: 1.65;
 }
 
-/* --- Premium Unified Media Slider Framework --- */
+/* --- Fixed Premium Slider Framework --- */
 .premium-slider {
     position: relative;
     width: 100%;
@@ -482,27 +482,30 @@ body {
     left: 0;
 }
 
-.slide img {
+/* Media Centering Enclosure */
+.media-container {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-}
-
-.video-container {
-    width: 100%;
-    height: 100%;
-    background: #000;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #110b0c;
+    padding-bottom: 60px; /* Leaves clear breathing space for the caption overlay */
 }
 
-.video-container video {
+.media-container img {
+    max-width: 100%;
     max-height: 100%;
-    width: 100%;
+    object-fit: contain; /* Prevents squishing and honors structural aspect-ratios */
 }
 
-/* Overlay Navigation System Elements */
+.media-container video {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* Overlay Navigation Information Labels */
 .slide-index {
     position: absolute;
     top: 20px;
@@ -517,6 +520,7 @@ body {
     font-weight: 700;
     letter-spacing: 1px;
     border: 1px solid rgba(255,255,255,0.1);
+    z-index: 15;
 }
 
 .slide-caption {
@@ -530,28 +534,30 @@ body {
     font-size: 1rem;
     font-weight: 500;
     text-align: left;
+    z-index: 12;
+    pointer-events: none; /* Allows pointer clicks to pass through to media controls beneath */
 }
 
-/* Minimalist Round UI Navigation Arrows */
+/* Floating Sleek Circular Interface Arrows */
 .nav-arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     width: 48px;
     height: 48px;
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255,255,255,0.25);
+    border: 1px solid rgba(255,255,255,0.3);
     color: white;
     border-radius: 50%;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.8rem;
+    font-size: 1.1rem;
     transition: var(--transition-smooth);
-    z-index: 10;
+    z-index: 30; /* Places controls safely above all underlying media blocks */
 }
 
 .nav-arrow:hover {
@@ -560,8 +566,8 @@ body {
     box-shadow: 0 0 15px rgba(255,255,255,0.4);
 }
 
-.nav-arrow.left { left: 20px; transform: translateY(-50%) rotate(-45deg); }
-.nav-arrow.right { right: 20px; transform: translateY(-50%) rotate(135deg); }
+.nav-arrow.left { left: 20px; }
+.nav-arrow.right { right: 20px; }
 
 /* Horizontal Slider Indicator Layout */
 .indicator-bar {
@@ -593,7 +599,7 @@ body {
 }
 
 @keyframes sliderFade {
-    from { opacity: 0.4; }
+    from { opacity: 0.5; }
     to { opacity: 1; }
 }
 
@@ -623,6 +629,10 @@ body {
     .nav-dock li { margin-right: 4px; }
     .nav-dock a { padding: 8px 14px; white-space: nowrap; }
     .premium-slider { height: 380px; }
+    .media-container { padding-bottom: 50px; }
     .dash-card { padding: 25px; }
     .app-header h1 { font-size: 2.2rem; }
+    .nav-arrow { width: 40px; height: 40px; font-size: 0.9rem; }
+    .nav-arrow.left { left: 10px; }
+    .nav-arrow.right { right: 10px; }
 }
