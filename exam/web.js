@@ -30,7 +30,7 @@ function initializeDots() {
     const container = document.getElementById("dotContainer");
     if(!container) return;
     
-    container.innerHTML = ""; // Hard Clear
+    container.innerHTML = ""; // Clear existing contents safely
     for(let idx = 0; idx < slides.length; idx++) {
         let dotElement = document.createElement("span");
         dotElement.className = "dot";
@@ -95,16 +95,18 @@ function executeScrollMetrics() {
     
     let currentSectionId = "";
     sections.forEach(section => {
-        const sectionTop = section.offsetTop - 100;
-        if (pageYOffset >= sectionTop) {
+        const sectionTop = section.offsetTop - 120;
+        if (window.pageYOffset >= sectionTop) {
             currentSectionId = section.getAttribute("id");
         }
     });
 
-    navLinks.forEach(link => {
-        link.classList.remove("active");
-        if (link.getAttribute("href") === `#${currentSectionId}`) {
-            link.classList.add("active");
-        }
-    });
+    if (currentSectionId) {
+        navLinks.forEach(link => {
+            link.classList.remove("active");
+            if (link.getAttribute("href") === `#${currentSectionId}`) {
+                link.classList.add("active");
+            }
+        });
+    }
 }
